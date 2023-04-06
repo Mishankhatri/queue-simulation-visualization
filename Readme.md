@@ -5,11 +5,16 @@
 - You have 5 servers that handles each request with service time of 1 second.
 - You have each queue for servers for customers , Each customer can bulk requests.
 - And one server will move to next customer only if all requests from customer is finished.
+- On adding a new customer with bulk requests, the customer should be added to the queue with minimum number of requests
 
 Note:
 
 - Stop server if request queue are empty.
 - Server will start immediately and at the same time.
+
+Future:
+
+- Allow user to add new server
 
 Example:S = Server, C = Customer, C(`request-count`) = request count associated with each customer
 
