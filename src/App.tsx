@@ -8,14 +8,14 @@ function App() {
 
   const SERVICE_TIME = 1000 // 1s service time for server
 
-  const [newCustomerRequest, setNewCustomerRequest] = useState(1)
+  const [newCustomerRequest, setNewCustomerRequest] = useState<number | null>(null)
   const [serverQueues, setServerQueues] = useState<number[][]>([[9, 10], [6], [], [4], [8]]);
 
   const timerRef = useRef<number | null>(null);
 
   const handleRequestInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value) {
-      setNewCustomerRequest(parseInt(e.target.value))
+      setNewCustomerRequest(+e.target.value)
     }
   }
 
@@ -42,6 +42,7 @@ function App() {
 
   const handleAddCustomer = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!newCustomerRequest) return
     let indexToBeUpdated = findQueueWithMinRequest(serverQueues)
 
     let temp = [...serverQueues]
@@ -76,7 +77,7 @@ function App() {
           <legend>Add New Bulk Requests</legend>
           <form onSubmit={handleAddCustomer} className="request-form">
             <label htmlFor="customer-request">Request count : </label>
-            <input type="number" name="customer-request" id="customer-request" placeholder="Number of requests" className="customer-input" value={newCustomerRequest} onChange={handleRequestInput} min={1} max={100} />
+            <input type="number" name="customer-request" id="customer-request" placeholder="Number of requests" className="customer-input" min={1} max={100} onChange={handleRequestInput} required />
             <button type="submit">Add</button>
           </form>
         </fieldset>
