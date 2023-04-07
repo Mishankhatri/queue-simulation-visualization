@@ -1,7 +1,7 @@
 {
-  "homepage": "https://mishankhatri.github.io/queue-simulation-visualization",
-  "name": "queue-simulation-react",
-  "private": true,
+  "homepage": "https://mishankhatri.github.io/queue-simulation-visualization/",
+  "name": "queue-simulation-visualization",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
